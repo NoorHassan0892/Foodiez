@@ -9,26 +9,26 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="bg-white min-h-screen h-full flex items-center justify-center">
-      <div className="w-full flex justify-center px-6 py-8 bg-white rounded-md shadow-md">
-        <div className="w-[50%] px-6 py-8 bg-white rounded-md shadow-md">
+    <div className="bg-white  h-[100vh] flex items-center justify-center ">
+      <div className="w-full flex justify-center bg-white">
+        <div className="w-[50%] px-6 py-8 bg-white">
           <h2 className=" flex justify-center text-3xl text-black font-semibold mb-6">
             Login
-          </h2>{" "}
+          </h2>
           <form>
-            E-mail Address
+            Username
             <div className="mb-4">
               <label
-                htmlFor="email"
+                htmlFor="Username"
                 className="block text-white text-sm font-medium mb-2"
               >
-                Enter your e-mail
+                Enter a unique username
               </label>
               <input
                 type="text"
-                name="email"
-                id="email"
-                className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                name="Username"
+                id="Username"
+                className="w-full px-4 py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>{" "}
@@ -44,19 +44,18 @@ const Login = () => {
                 name="password"
                 type="password"
                 id="password"
-                className="w-full px-4 py-2 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
             <div>
               Do not have an accout yet?
-              <Link classname="" to="Register">
-                {" "}
+              <Link classname=" text-emerald-500 " to="Register">
                 Register here
               </Link>
             </div>
             <div>
-              <Link className=" text-emerald-500 " to="Register">
+              <Link className=" text-emerald-500 " to="Home">
                 Continue as guest
               </Link>
             </div>
@@ -78,7 +77,7 @@ const Login = () => {
               <img src={line} className="h-full w-full" />
             </div>
           </div>
-          <div className="flex justify-items-center justify-center ">
+          <div className="flex justify-center align-middle items-center ml-9">
             <div>
               <img src={google} className="h-full w-[50%]" />
             </div>
@@ -88,8 +87,12 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className=" w-[50%] h-full rounded-md ">
-        <img src={pancake} alt="pancake" className="h-full w-full" />
+      <div className=" w-[50%] h-[100vh] overflow-hidden">
+        <img
+          src={pancake}
+          alt="pancake"
+          className="object-contain rounded-tl-md rounded-bl-md"
+        />
       </div>
     </div>
   );

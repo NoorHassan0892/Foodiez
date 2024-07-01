@@ -1,5 +1,4 @@
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import Login from "./pages/Login";
 import UserContext from "./context/UserContext";
 import { useEffect, useState } from "react";
