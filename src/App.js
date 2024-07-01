@@ -3,6 +3,7 @@ import "./App.css";
 import Login from "./pages/Login";
 import UserContext from "./context/UserContext";
 import { useEffect, useState } from "react";
+import { login } from "./api/auth";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -11,13 +12,7 @@ function App() {
     if (localStorage.getItem("token")) setUser(true);
   }, []);
 
-  return (
-    <UserContext.Provider value={[user, setUser]}>
-      <Routes>
-        <Route path="/login" Component={Login} />
-      </Routes>
-    </UserContext.Provider>
-  );
+  return <Login />;
 }
 
 export default App;
