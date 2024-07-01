@@ -13,4 +13,15 @@ const login = async (username, password) => {
   }
 };
 
-export { login };
+const register = async (userInfo) => {
+  try {
+    const formData = new FormData();
+    for (const key in userInfo) formData.append(key, userInfo[key]);
+    const { data } = await instance.post("/auth/register", formData);
+    storeToken(data.token);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { login, register };
