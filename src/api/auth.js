@@ -25,4 +25,13 @@ const register = async (userInfo) => {
   }
 };
 
+const getMyProfile = async () => {
+  try {
+    const { data } = await instance.get("/user/register");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export { login, register };
