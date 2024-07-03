@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "./pages/Login";
 import UserContext from "./context/UserContext";
 import { useEffect, useState } from "react";
@@ -6,14 +6,19 @@ import Register from "./pages/Register";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Recipies from "./pages/Recipies";
 import AddRecipe from "./pages/AddRecipe";
-import AddedRecipe from "./pages/AddedRecipe";
+
 import AllRecipes from "./pages/AllRecipes";
+import Intro from "./pages/Intro";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
 
 function App() {
   const [user, setUser] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
-    if (localStorage.getItem("token")) setUser(true);
+    if (localStorage.getItem("token")) {
+      setUser(true);
+    }
   }, []);
 
   const queryClient = new QueryClient();
@@ -31,8 +36,11 @@ function App() {
               <Route path="/login" Component={Login} />
             </>
           )}
+          <Route path="/" Component={Intro} />
+          <Route path="/home" Component={Home} />
           <Route path="/recipes/create" Component={AddRecipe} />
           <Route path="/recipes" Component={AllRecipes} />
+          <Route path="/profile" Component={Profile} />
         </Routes>
       </UserContext.Provider>
     </QueryClientProvider>

@@ -38,6 +38,15 @@ const getuser = async () => {
   }
 };
 
+const getMyProfile = async () => {
+  try {
+    const { data } = await instance.get("/user/register");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const register = async (userInfo) => {
   try {
     // const formData = new FormData();
@@ -46,8 +55,7 @@ const register = async (userInfo) => {
     const { data } = await instance.post("/register", userInfo);
     storeToken(data.token);
     return data;
-    }
-     catch (error) {
+  } catch (error) {
     console.log(error);
   }
 };
