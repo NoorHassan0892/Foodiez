@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { login } from "./api/auth";
 import Register from "./pages/Register";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Recipies from "./pages/Recipies";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -18,12 +19,11 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <UserContext.Provider value={[user, setUser]}>
-        <div>
-          <Routes>
-            <Route path="/register" Component={Register} />
-            <Route path="/login" Component={Login} />
-          </Routes>
-        </div>
+        <Routes>
+          <Route path="/register" Component={Register} />
+          <Route path="/login" Component={Login} />
+          <Route path="/recipies" Component={Recipies} />
+        </Routes>
       </UserContext.Provider>
     </QueryClientProvider>
   );

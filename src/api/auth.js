@@ -15,13 +15,21 @@ const login = async (username, password) => {
 
 const register = async (userInfo) => {
   try {
-    const formData = new FormData();
-    for (const key in userInfo) formData.append(key, userInfo[key]);
-    const { data } = await instance.post("/auth/register", formData);
+    // const formData = new FormData();
+    // for (const key in userInfo) formData.append(key, userInfo[key]);
+    console.log(userInfo);
+    const { data } = await instance.post("/register", userInfo);
     storeToken(data.token);
+    return data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export { login, register };
+const allRecipies = async () => {
+  const { data } = await instance.get("/recipies/allRecipies");
+  console.log(data);
+  return data;
+};
+
+export { login, register, allRecipies };

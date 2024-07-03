@@ -1,17 +1,27 @@
 import React, { useContext, useState } from "react";
-import UserContext from "../context/UserContext";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../api/auth";
 import pancake from "../assets/login pic.svg";
 import line from "../assets/line.svg";
 import google from "../assets/google logo.svg";
 import facebook from "../assets/facebook logo.svg";
+import UserContext from "../context/UserContext";
 
 const Register = () => {
-  console.log("first");
   const [userInfo, setUserInfo] = useState({});
   const [user, setUser] = useContext(UserContext); //to keep track of the user
+  // const queryClient = useQueryClient();
+  const navigate = useNavigate();
+
+  const { mutate } = useMutation({
+    mutationKey: ["registerForm"],
+    mutationFn: () => register(userInfo),
+    onSuccess: () => {
+      setUser(true); // the slash refers to home page , check its route!
+      navigate("/home");
+    },
+  });
 
   const handleChange = (e) => {
     if (e.target.name === "image") {
@@ -20,17 +30,6 @@ const Register = () => {
       setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
     }
   };
-
-  const navigate = useNavigate();
-  const queryClient = useQueryClient();
-
-  const { data, mutate } = useMutation({
-    mutationKey: ["register"],
-    mutationFn: register(userInfo),
-    onSuccess: () => {
-      setUser(true); // the slash refers to home page , check its route!
-    },
-  });
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -49,8 +48,8 @@ const Register = () => {
             <div className="mb-4">
               <input
                 type="text"
-                name="Username"
-                id="Username"
+                name="username"
+                id="username"
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-400 bg-slate-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
@@ -70,9 +69,9 @@ const Register = () => {
             Confirm your Password
             <div className="mb-6">
               <input
-                name="password"
+                name="confirmpassword"
                 type="password"
-                id="password"
+                id="confirmpassword"
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-400 bg-slate-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
