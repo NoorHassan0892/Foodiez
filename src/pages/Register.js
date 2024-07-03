@@ -26,9 +26,10 @@ const Register = () => {
 
   const { data, mutate } = useMutation({
     mutationKey: ["register"],
-    mutationFn: register(userInfo),
+    mutationFn: () => register(userInfo),
     onSuccess: () => {
       setUser(true); // the slash refers to home page , check its route!
+      navigate("/Home");
     },
   });
 
@@ -49,7 +50,7 @@ const Register = () => {
             <div className="mb-4">
               <input
                 type="text"
-                name="Username"
+                name="username"
                 id="Username"
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-400 bg-slate-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"

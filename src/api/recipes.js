@@ -1,28 +1,19 @@
 import instance from ".";
 
-const addrecipe = async (
-  image,
-  title,
-  overview,
-  servings,
-  category,
-  cooktime,
-  preptime,
-  instructions,
-  user
-) => {
-  const { data } = await instance.post("/recipies", {
-    image: image,
-    title: title,
-    overview: overview,
-    servings: servings,
-    category: category,
-    cooktime: cooktime,
-    preptime: preptime,
-    instructions: instructions,
-    ingredients: ingredients,
-    user: user,
-  });
+const addrecipe = async (image, ingredients, recipeInfo) => {
+  const formData = new FormData();
+
+  formData.append("image", image);
+  for (let key in recipeInfo) {
+    formData.append(key, recipeInfo[key]);
+  }
+
+  ingredients.forEach((indegredient) =>
+    formData.append("ingredients", indegredient)
+  );
+
+  const { data } = await instance.post("/recipies", formData);
+
   return data;
 };
 

@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import Register from "./pages/Register";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AddRecipe from "./pages/AddRecipe";
+import AddedRecipe from "./pages/AddedRecipe";
+import AllRecipes from "./pages/AllRecipes";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -18,13 +20,16 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <UserContext.Provider value={[user, setUser]}>
-        <div>
-          <Routes>
-            <Route path="/register" Component={Register} />
-            <Route path="/login" Component={Login} />
-            <Route path="/addrecipe" Component={AddRecipe} />
-          </Routes>
-        </div>
+        <Routes>
+          {!user && (
+            <>
+              <Route path="/register" Component={Register} />
+              <Route path="/login" Component={Login} />
+            </>
+          )}
+          <Route path="/recipes/create" Component={AddRecipe} />
+          <Route path="/recipes" Component={AllRecipes} />
+        </Routes>
       </UserContext.Provider>
     </QueryClientProvider>
   );
