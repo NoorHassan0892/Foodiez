@@ -13,6 +13,31 @@ const login = async (userInfo) => {
   }
 };
 
+const getAllUsers = async () => {
+  try {
+    const { data } = await instance.get("/user/users");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const updateProfile = async (userInfo) => {
+  try {
+    const { data } = await instance.post("user/:id", userInfo);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const getuser = async () => {
+  try {
+    const { data } = await instance.get("user/:id");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const register = async (userInfo) => {
   try {
     const { data } = await instance.post("/user/register", userInfo);
@@ -25,4 +50,4 @@ const register = async (userInfo) => {
   }
 };
 
-export { login, register };
+export { login, getAllUsers, register, updateProfile, getuser };
