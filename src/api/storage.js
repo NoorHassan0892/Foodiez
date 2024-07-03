@@ -5,7 +5,9 @@ const storeToken = (token) => {
 };
 
 const getToken = () => {
-  return localStorage.getItem("token");
+  const token = localStorage.getItem("token");
+  return token;
+  // return localStorage.getItem("token");
 };
 
 const removeToken = () => {

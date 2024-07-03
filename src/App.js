@@ -4,6 +4,7 @@ import UserContext from "./context/UserContext";
 import { useEffect, useState } from "react";
 import Register from "./pages/Register";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Recipies from "./pages/Recipies";
 import AddRecipe from "./pages/AddRecipe";
 
 import AllRecipes from "./pages/AllRecipes";
@@ -26,6 +27,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <UserContext.Provider value={[user, setUser]}>
         <Routes>
+          <Route path="/register" Component={Register} />
+          <Route path="/login" Component={Login} />
+          <Route path="/recipies" Component={Recipies} />
           {!user && (
             <>
               <Route path="/register" Component={Register} />
