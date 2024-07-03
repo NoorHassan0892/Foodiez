@@ -1,9 +1,9 @@
 import instance from ".";
 import { storeToken } from "./storage";
 
-const login = async (username, password) => {
+const login = async (userInfo) => {
   try {
-    const { data } = await instance.post("/auth/login", { username, password });
+    const { data } = await instance.post("/user/login", userInfo);
     if (data.token) {
       storeToken(data.token);
     }
@@ -37,13 +37,17 @@ const getuser = async () => {
     console.log(error);
   }
 };
-const getMyProfile = async () => {
+
+const register = async (userInfo) => {
   try {
-    const { data } = await instance.get("user/profile");
+    const { data } = await instance.post("/user/register", userInfo);
+    if (data.token) {
+      storeToken(data.token);
+    }
     return data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export { login, getAllUsers, updateProfile, getuser, getMyProfile };
+export { login, getAllUsers, register, updateProfile, getuser };
