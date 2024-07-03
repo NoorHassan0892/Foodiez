@@ -31,6 +31,18 @@ const Register = () => {
     }
   };
 
+  // const navigate = useNavigate();
+  // const queryClient = useQueryClient();
+
+  // const { data, mutate } = useMutation({
+  //   mutationKey: ["register"],
+  //   mutationFn: () => register(userInfo),
+  //   onSuccess: () => {
+  //     setUser(true); // the slash refers to home page , check its route!
+  //     navigate("/Home");
+  //   },
+  // });
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     mutate();

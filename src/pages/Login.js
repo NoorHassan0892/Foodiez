@@ -1,68 +1,92 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import UserContext from "../context/UserContext";
 import { useMutation } from "@tanstack/react-query";
+import { Link, useNavigate } from "react-router-dom";
 import { login } from "../api/auth";
 import pancake from "../assets/login pic.svg";
 import line from "../assets/line.svg";
 import google from "../assets/google logo.svg";
 import facebook from "../assets/facebook logo.svg";
-import { Link } from "react-router-dom";
+import logo from "../assets/black logo.svg";
+import yellow from "../assets/yellow shape.svg";
 
 const Login = () => {
+  const [userInfo, setUserInfo] = useState({});
+  const [user, setUser] = useContext(UserContext);
+
+  const navigate = useNavigate();
+
+  const { mutate, isPending } = useMutation({
+    mutationKey: ["Login"],
+    mutationFn: () => login(userInfo),
+    onSuccess: () => {
+      setUser(true);
+      navigate("/Home");
+    },
+  });
+
+  const handleChange = (e) => {
+    setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    mutate();
+  };
+
   return (
     <div className="bg-white  h-[100vh] flex items-center justify-center ">
+      <div className=" w-[25%]">
+        <img src={logo} alt="logo" className="object-contain" />
+      </div>
       <div className="w-full flex justify-center bg-white">
         <div className="w-[50%] px-6 py-8 bg-white">
           <h2 className=" flex justify-center text-3xl text-black font-semibold mb-6">
             Login
           </h2>
-          <form>
+          <form onSubmit={handleFormSubmit}>
             Username
             <div className="mb-4">
-              <label
-                htmlFor="Username"
-                className="block text-white text-sm font-medium mb-2"
-              >
-                Enter a unique username
-              </label>
               <input
                 type="text"
-                name="Username"
+                name="username"
+                value={userInfo.username}
+                onChange={handleChange}
                 id="Username"
-                className="w-full px-4 py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-zinc-300 bg-zinc-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
-            </div>{" "}
+            </div>
             Password
             <div className="mb-6">
-              <label
-                htmlFor="password"
-                className="block text-white text-sm font-medium mb-2"
-              >
-                Password
-              </label>
               <input
                 name="password"
                 type="password"
                 id="password"
-                className="w-full px-4 py-2 border border-gray-400 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={userInfo.password}
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-zinc-300 bg-zinc-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
             <div>
-              Do not have an accout yet?
-              <Link classname=" text-emerald-500 " to="Register">
+              Do not have an account yet? {}
+              <Link classname=" text-emerald-800 " to="Register">
                 Register here
               </Link>
             </div>
             <div>
-              <Link className=" text-emerald-500 " to="Home">
+              <Link className=" text-emerald-800 " to="Home">
                 Continue as guest
               </Link>
+            </div>
+            <div className="w-full bg-transparent px-4 py-2 flex justify-center">
+              {" "}
             </div>
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors mb-4"
+                className="w-full px-4 py-2 bg-amber-400 text-black rounded-md hover:bg-amber-500 transition-colors mb-4"
               >
                 Login
               </button>
@@ -88,11 +112,7 @@ const Login = () => {
         </div>
       </div>
       <div className=" w-[50%] h-[100vh] overflow-hidden">
-        <img
-          src={pancake}
-          alt="pancake"
-          className="object-contain rounded-tl-md rounded-bl-md"
-        />
+        <img src={pancake} alt="pancake" className="object-contain" />
       </div>
     </div>
   );
