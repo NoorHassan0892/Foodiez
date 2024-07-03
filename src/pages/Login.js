@@ -18,7 +18,7 @@ const Login = () => {
 
   const { mutate, isPending } = useMutation({
     mutationKey: ["Login"],
-    mutationFn: () => login(userInfo.username, userInfo.password),
+    mutationFn: () => login(userInfo),
     onSuccess: () => {
       setUser(true);
       navigate("/Home");
@@ -49,7 +49,7 @@ const Login = () => {
             <div className="mb-4">
               <input
                 type="text"
-                name="Username"
+                name="username"
                 value={userInfo.username}
                 onChange={handleChange}
                 id="Username"

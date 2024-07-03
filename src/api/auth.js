@@ -3,7 +3,7 @@ import { storeToken } from "./storage";
 
 const login = async (userInfo) => {
   try {
-    const { data } = await instance.post("/auth/login", { userInfo });
+    const { data } = await instance.post("/user/login", userInfo);
     if (data.token) {
       storeToken(data.token);
     }
@@ -15,10 +15,11 @@ const login = async (userInfo) => {
 
 const register = async (userInfo) => {
   try {
-    const formData = new FormData();
-    for (const key in userInfo) formData.append(key, userInfo[key]);
-    const { data } = await instance.post("/auth/register", formData);
-    storeToken(data.token);
+    const { data } = await instance.post("/user/register", userInfo);
+    if (data.token) {
+      storeToken(data.token);
+    }
+    return data;
   } catch (error) {
     console.log(error);
   }
