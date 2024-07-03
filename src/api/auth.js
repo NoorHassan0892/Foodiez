@@ -13,4 +13,37 @@ const login = async (username, password) => {
   }
 };
 
-export { login };
+const getAllUsers = async () => {
+  try {
+    const { data } = await instance.get("/user/users");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const updateProfile = async (userInfo) => {
+  try {
+    const { data } = await instance.post("user/:id", userInfo);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const getuser = async () => {
+  try {
+    const { data } = await instance.get("user/:id");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+const getMyProfile = async () => {
+  try {
+    const { data } = await instance.get("user/profile");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { login, getAllUsers, updateProfile, getuser, getMyProfile };
