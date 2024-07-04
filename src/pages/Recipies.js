@@ -18,6 +18,7 @@ const Recipies = () => {
       title={recipe.title}
       image={recipe.image}
       username={recipe?.username?.name}
+      id={recipe._id}
     />
   ));
 
@@ -54,7 +55,10 @@ const Recipies = () => {
           </div>
         </div>
       </div>
-      <>{recipiesList}</>
+      <div className=" flex flex-wrap justify-center items-center">
+        {" "}
+        {recipiesList}
+      </div>
     </div>
   );
 };

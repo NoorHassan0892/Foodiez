@@ -10,6 +10,7 @@ import Searchbar from "../components/Searchbar";
 import CategoryHeader from "../components/CategoryHeader";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div>
       <CategoryHeader />

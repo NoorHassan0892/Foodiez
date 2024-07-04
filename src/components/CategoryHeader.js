@@ -4,7 +4,6 @@ import pic from "../assets/Apple store.svg";
 import { useNavigate } from "react-router-dom";
 
 const CategoryHeader = () => {
-<<<<<<< HEAD
   const navigate = useNavigate();
   return (
     <div className="bg-[#111214] flex items-center justify-between h-20 w-full">
@@ -19,7 +18,7 @@ const CategoryHeader = () => {
           Add Recipe
         </button>
         <button
-          onClick={() => navigate("/recipes/create")}
+          onClick={() => navigate("/profile")}
           className="bg-[#111214] border w-20 rounded-xl h-10 text-white "
         >
           Profile
@@ -27,11 +26,6 @@ const CategoryHeader = () => {
       </div>
     </div>
   );
-=======
-  return <div className="bg-[#111214] h-12 w-full">
-    
-  </div>;
->>>>>>> origin/main
 };
 
 export default CategoryHeader;
