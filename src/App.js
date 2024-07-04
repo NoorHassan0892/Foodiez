@@ -20,6 +20,7 @@ import Searchbar from "./components/Searchbar";
 import AddRecipe from "./pages/AddRecipe";
 import RecipeDetail from "./pages/RecipeDetail";
 import Recipies from "./pages/Recipies";
+import OneRecipe from "./pages/GetOneRecipe";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -46,6 +47,7 @@ function App() {
           <Route path="/register" Component={Register} />
           <Route path="/login" Component={Login} />
           <Route path="/recipies" Component={Recipies} />
+          <Route path="/onerecipe/:recipeId" Component={OneRecipe} />
           {!user && (
             <>
               <Route path="/register" Component={Register} />

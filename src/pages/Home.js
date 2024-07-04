@@ -6,8 +6,10 @@ import google from "../assets/Google play.svg";
 import insta from "../assets/Instagram colored.svg";
 import facebook from "../assets/Facebook colored.svg";
 import x from "../assets/Twitter.svg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="">
       <div
@@ -23,10 +25,16 @@ const Home = () => {
             <img src={logo} alt="logo" class="w-80 h-80 rounded-full " />
           </div>
           <div class=" absolute right-0">
-            <button class="bg-amber-400 px-10 m-6 h-10 font-semibold rounded-full">
+            <button
+              onClick={() => navigate("/login")}
+              class="bg-amber-400 px-10 m-6 h-10 font-semibold rounded-full"
+            >
               Login
             </button>
-            <button class="bg-amber-400 px-10 m-6 h-10 font-semibold rounded-full ">
+            <button
+              onClick={() => navigate("/register")}
+              class="bg-amber-400 px-10 m-6 h-10 font-semibold rounded-full "
+            >
               Register
             </button>
           </div>

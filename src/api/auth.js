@@ -62,6 +62,11 @@ const allRecipies = async () => {
   return data;
 };
 
+const fetchRecipe = async (recipeId) => {
+  const { data } = await instance.get(`recipies/${recipeId}`);
+  return data;
+};
+
 export {
   login,
   getMyProfile,
@@ -70,5 +75,5 @@ export {
   updateProfile,
   allRecipies,
   getuser,
-  getMyProfile,
+  fetchRecipe,
 };
