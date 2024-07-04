@@ -16,6 +16,7 @@ import Profile from "./pages/Profile";
 import Footer from "./components/Footer";
 import CategoryHeader from "./components/CategoryHeader";
 import Searchbar from "./components/Searchbar";
+import AddRecipe from "./pages/AddRecipe";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -47,6 +48,7 @@ function App() {
           {user && <Route path="/profile" Component={Profile} />}
           <Route path="/home" Component={Home} />
           <Route path="/recipes" Component={AllRecipes} />
+          <Route path="/recipes/create" Component={AddRecipe} />
         </Routes>
 
         {shouldRenderHeaderAndSearchbar(location.pathname) && (
