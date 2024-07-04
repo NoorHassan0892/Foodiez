@@ -29,9 +29,9 @@ const updateProfile = async (userInfo) => {
     console.log(error);
   }
 };
-const getuser = async () => {
+const getuser = async (userId) => {
   try {
-    const { data } = await instance.get("user/:id");
+    const { data } = await instance.get(`user/${userId}`);
     return data;
   } catch (error) {
     console.log(error);
@@ -39,12 +39,8 @@ const getuser = async () => {
 };
 
 const getMyProfile = async () => {
-  try {
-    const { data } = await instance.get("/user/register");
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
+  const { data } = await instance.get("user/me");
+  return data;
 };
 
 const register = async (userInfo) => {
@@ -60,10 +56,24 @@ const register = async (userInfo) => {
   }
 };
 
+const getMyRecipies = async () => {
+  const { data } = await instance.get("user/me/recipies");
+  return data;
+};
+
 const allRecipies = async () => {
   const { data } = await instance.get("/recipies/allRecipies");
   console.log(data);
   return data;
 };
 
-export { login, getAllUsers, register, updateProfile, allRecipies, getuser };
+export {
+  login,
+  getMyRecipies,
+  getMyProfile,
+  getAllUsers,
+  register,
+  updateProfile,
+  allRecipies,
+  getuser,
+};
