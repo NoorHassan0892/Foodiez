@@ -1,21 +1,11 @@
-<<<<<<< HEAD
-import React from "react";
-
-const Profile = () => {
-  return (
-    <div className="bg-blue-200 flex flex-col h-screen px-[300px] ">
-      <div className="bg-red-300 w-full h-[20%] flex flex-col">
-        <div className="bg-red-900 w-[20%] h-full"></div>
-        <div className="bg-green-900"></div>
-      </div>
-      <div className="bg-blue-300 w-full h-[80%]"></div>
-=======
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { getMyProfile, getuser } from "../api/auth";
 import UserContext from "../context/UserContext"; // Adjust the import based on your setup
 import Recipies from "./Recipies";
 import RecipeItem from "../components/RecipeItemAsma";
+import CategoryHeader from "../components/CategoryHeader";
+import Footer from "../components/Footer";
 
 const Profile = () => {
   const [user] = useContext(UserContext); // Assuming user object contains userId
@@ -39,12 +29,18 @@ const Profile = () => {
   if (error) return <div>Error loading profile</div>;
 
   return (
-    <div className="bg-blue-200 flex flex-col h-screen px-[300px] ">
-      <div className="bg-red-300 w-full h-[20%] flex ">
-        <div className="bg-green-900">{userInfo?.username}</div>
+    <div>
+      {" "}
+      <CategoryHeader />
+      <div className="pt-9 flex flex-col h-screen px-[300px] ">
+        <div className=" w-full h-[20%] flex ">
+          <div className=" text-3xl font-Cormorant">{userInfo?.username}</div>
+        </div>
+        <div className="flex flex-wrap w-full justify-center gap-2 m-2 h-[80%]">
+          {recipesList}
+        </div>
       </div>
-      <div className="bg-blue-300 w-full h-[80%]">{recipesList}</div>
->>>>>>> origin/main
+      <Footer></Footer>
     </div>
   );
 };

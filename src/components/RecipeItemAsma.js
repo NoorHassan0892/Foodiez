@@ -3,9 +3,9 @@ import React from "react";
 const RecipeItem = ({ recipe }) => {
   const BASEURL = "http://localhost:8000";
   return (
-    <div className="p-4 w-[20%]">
+    <div className="p-4 bg-white border shadow-xl w-[20%]">
       <img
-        className="rounded-md w-[25%]"
+        className="rounded-md w-[70%]"
         alt={recipe.title}
         src={`${BASEURL}/${recipe.image}`}
       />
