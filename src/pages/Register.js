@@ -50,6 +50,7 @@ const Register = () => {
             <div className="mb-4">
               <input
                 type="text"
+                placeholder="Choose your username"
                 name="username"
                 id="username"
                 onChange={handleChange}
@@ -61,6 +62,7 @@ const Register = () => {
             <div className="mb-6">
               <input
                 name="password"
+                placeholder="Choose your password"
                 type="password"
                 id="password"
                 onChange={handleChange}
@@ -72,6 +74,7 @@ const Register = () => {
             <div className="mb-6">
               <input
                 name="confirmpassword"
+                placeholder="Confirm your password"
                 type="password"
                 id="confirmpassword"
                 onChange={handleChange}
@@ -81,12 +84,12 @@ const Register = () => {
             </div>
             <div className="">
               Already have an account?
-              <Link className="text-emerald-800" to="Login">
+              <Link className=" font-semibold" to="Login">
                 Login Here!
               </Link>
             </div>
             <div className="mb-6">
-              <Link className="text-emerald-800" to="Home">
+              <Link className=" font-semibold" to="Home">
                 Continue as a guest
               </Link>
             </div>
