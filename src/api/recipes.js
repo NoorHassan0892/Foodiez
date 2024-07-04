@@ -18,7 +18,7 @@ const addrecipe = async (image, ingredients, recipeInfo) => {
 };
 
 const getAllRecipes = async () => {
-  const { data } = await instance.get("/recipies");
+  const { data } = await instance.get("/recipies/allRecipies");
   return data;
 };
 
