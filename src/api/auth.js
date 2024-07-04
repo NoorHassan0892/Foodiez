@@ -56,11 +56,6 @@ const register = async (userInfo) => {
   }
 };
 
-const getMyRecipies = async () => {
-  const { data } = await instance.get("user/me/recipies");
-  return data;
-};
-
 const allRecipies = async () => {
   const { data } = await instance.get("/recipies/allRecipies");
   console.log(data);
@@ -69,11 +64,11 @@ const allRecipies = async () => {
 
 export {
   login,
-  getMyRecipies,
   getMyProfile,
   getAllUsers,
   register,
   updateProfile,
   allRecipies,
   getuser,
+  getMyProfile,
 };
