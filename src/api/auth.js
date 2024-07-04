@@ -50,4 +50,13 @@ const register = async (userInfo) => {
   }
 };
 
-export { login, getAllUsers, register, updateProfile, getuser };
+const getMyProfile = async () => {
+  try {
+    const { data } = await instance.get("user/:id");
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { login, getAllUsers, register, updateProfile, getuser, getMyProfile };
