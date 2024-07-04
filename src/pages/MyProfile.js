@@ -8,7 +8,7 @@ const MyProfile = () => {
     queryFn: getMyProfile,
   });
   return (
-    <div>
+    <div className="">
       {user?.map((user) => (
         <div key={user._id}>
           <img

@@ -38,25 +38,40 @@ const getuser = async () => {
   }
 };
 
-const register = async (userInfo) => {
-  try {
-    const { data } = await instance.post("/user/register", userInfo);
-    if (data.token) {
-      storeToken(data.token);
-    }
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 const getMyProfile = async () => {
   try {
-    const { data } = await instance.get("user/:id");
+    const { data } = await instance.get("/user/register");
     return data;
   } catch (error) {
     console.log(error);
   }
 };
 
-export { login, getAllUsers, register, updateProfile, getuser, getMyProfile };
+const register = async (userInfo) => {
+  try {
+    // const formData = new FormData();
+    // for (const key in userInfo) formData.append(key, userInfo[key]);
+    console.log(userInfo);
+    const { data } = await instance.post("/register", userInfo);
+    storeToken(data.token);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const allRecipies = async () => {
+  const { data } = await instance.get("/recipies/allRecipies");
+  console.log(data);
+  return data;
+};
+
+export {
+  login,
+  getAllUsers,
+  register,
+  updateProfile,
+  allRecipies,
+  getuser,
+  getMyProfile,
+};

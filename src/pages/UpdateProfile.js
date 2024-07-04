@@ -26,7 +26,7 @@ const UpdateProfile = () => {
   };
 
   return (
-    <div>
+    <div className="min-h-screen  items-center justify-center absolute inset-0 z-[-1]">
       <div>
         <h2 className=" flex justify-center text-3xl text-black font-semibold mb-6">
           Update Profile:
