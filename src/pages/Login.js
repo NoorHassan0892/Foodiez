@@ -35,13 +35,11 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-white  h-[100vh] flex items-center justify-center ">
-      <div className=" w-[25%]">
-        <img src={logo} alt="logo" className="object-contain" />
-      </div>
+    <div className="bg-white h-[100vh] flex items-center justify-center relative">
+      <img src={logo} alt="logo" className="absolute top-4 left-4 w-48" />
       <div className="w-full flex justify-center bg-white">
         <div className="w-[50%] px-6 py-8 bg-white">
-          <h2 className=" flex justify-center text-3xl text-black font-semibold mb-6">
+          <h2 className="flex justify-center text-3xl text-black font-semibold mb-6">
             Login
           </h2>
           <form onSubmit={handleFormSubmit}>
@@ -70,23 +68,21 @@ const Login = () => {
               />
             </div>
             <div>
-              Do not have an account yet? {}
-              <Link classname=" text-emerald-800 " to="Register">
+              Do not have an account yet?{" "}
+              <Link className="text-emerald-800" to="Register">
                 Register here
               </Link>
             </div>
             <div>
-              <Link className=" text-emerald-800 " to="Home">
+              <Link className="text-emerald-800" to="Home">
                 Continue as guest
               </Link>
             </div>
-            <div className="w-full bg-transparent px-4 py-2 flex justify-center">
-              {" "}
-            </div>
+            <div className="w-full bg-transparent px-4 py-2 flex justify-center"></div>
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="w-full px-4 py-2 bg-amber-400 text-black rounded-md hover:bg-amber-500 transition-colors mb-4"
+                className="w-full px-4 py-2 bg-[#EBC76B] text-black rounded-md hover:bg-amber-500 transition-colors mb-4"
               >
                 Login
               </button>
@@ -111,7 +107,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <div className=" w-[50%] h-[100vh] overflow-hidden">
+      <div className="w-[50%] h-[100vh] overflow-hidden">
         <img src={pancake} alt="pancake" className="object-contain" />
       </div>
     </div>

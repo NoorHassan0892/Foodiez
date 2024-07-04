@@ -226,9 +226,6 @@ const AddRecipe = () => {
           <div className="flex justify-center gap-1"></div>
         </div>
       </div>
-      <div className="bg-black text-white  h-[10%] w-[100%] flex justify-center items-center font-semibold text-2xl">
-        Footer
-      </div>
     </div>
   );
 };

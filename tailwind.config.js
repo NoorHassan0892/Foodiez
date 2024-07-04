@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: {
         Cormorant: ["Cormorant Garamond", ...defaultTheme.fontFamily.sans],
         Poppins: ["Poppins", ...defaultTheme.fontFamily.sans],
+        Montserrat: ["Montserrat", ...defaultTheme.fontFamily.sans],
       },
     },
   },

@@ -66,5 +66,4 @@ const allRecipies = async () => {
   return data;
 };
 
-export { login, register, allRecipies };
-export { login, getAllUsers, register, updateProfile, getuser };
+export { login, getAllUsers, register, updateProfile, allRecipies, getuser };

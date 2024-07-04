@@ -6,19 +6,20 @@ import pancake from "../assets/login pic.svg";
 import line from "../assets/line.svg";
 import google from "../assets/google logo.svg";
 import facebook from "../assets/facebook logo.svg";
+import logo from "../assets/black logo.svg";
 import UserContext from "../context/UserContext";
 
 const Register = () => {
   const [userInfo, setUserInfo] = useState({});
-  const [user, setUser] = useContext(UserContext); //to keep track of the user
-  // const queryClient = useQueryClient();
+  const [user, setUser] = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const { mutate } = useMutation({
     mutationKey: ["registerForm"],
     mutationFn: () => register(userInfo),
     onSuccess: () => {
-      setUser(true); // the slash refers to home page , check its route!
+      setUser(true);
       navigate("/home");
     },
   });
@@ -31,28 +32,17 @@ const Register = () => {
     }
   };
 
-  // const navigate = useNavigate();
-  // const queryClient = useQueryClient();
-
-  // const { data, mutate } = useMutation({
-  //   mutationKey: ["register"],
-  //   mutationFn: () => register(userInfo),
-  //   onSuccess: () => {
-  //     setUser(true); // the slash refers to home page , check its route!
-  //     navigate("/Home");
-  //   },
-  // });
-
   const handleFormSubmit = (e) => {
     e.preventDefault();
     mutate();
   };
 
   return (
-    <div className="bg-white  h-[100vh] flex items-center justify-center ">
+    <div className="bg-white h-[100vh] flex items-center justify-center relative">
+      <img src={logo} alt="logo" className="absolute top-4 left-4 w-48" />
       <div className="w-full flex justify-center bg-white">
         <div className="w-[50%] px-6 py-8 bg-white">
-          <h2 className=" flex justify-center text-3xl text-black font-semibold mb-6 ">
+          <h2 className="flex justify-center text-3xl text-black font-semibold mb-6">
             Create an Account
           </h2>
           <form onSubmit={handleFormSubmit}>
@@ -63,7 +53,7 @@ const Register = () => {
                 name="username"
                 id="username"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-400 bg-slate-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-zinc-300 bg-zinc-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
@@ -74,7 +64,7 @@ const Register = () => {
                 type="password"
                 id="password"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-400 bg-slate-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-zinc-300 bg-zinc-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
@@ -85,25 +75,25 @@ const Register = () => {
                 type="password"
                 id="confirmpassword"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-400 bg-slate-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-zinc-300 bg-zinc-100 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 required
               />
             </div>
-            <div className=" mb-6 ">
-              Already have an account? {}
-              <Link classname=" text-emerald-400 " to="Login">
+            <div className="">
+              Already have an account?
+              <Link className="text-emerald-800" to="Login">
                 Login Here!
               </Link>
             </div>
-            <div className=" mb-6">
-              <Link className=" text-black " to="Home">
+            <div className="mb-6">
+              <Link className="text-emerald-800" to="Home">
                 Continue as a guest
               </Link>
             </div>
             <div className="flex justify-center">
               <button
                 type="submit"
-                className=" w-full px-4 py-2 bg-amber-400 text-white rounded-md hover:bg-amber-500 transition-colors mb-4"
+                className="w-full px-4 py-2 bg-[#EBC76B] text-black rounded-md hover:bg-amber-500 transition-colors mb-4"
               >
                 Create Account
               </button>
@@ -128,8 +118,8 @@ const Register = () => {
           </div>
         </div>
       </div>
-      <div className=" w-[50%] h-[100vh] overflow-hidden">
-        <img src={pancake} alt="pancake" className="object-contain " />
+      <div className="w-[50%] h-[100vh] overflow-hidden">
+        <img src={pancake} alt="pancake" className="object-contain" />
       </div>
     </div>
   );
