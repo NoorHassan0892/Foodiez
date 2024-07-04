@@ -57,7 +57,6 @@ const Recipies = () => {
       <>{recipiesList}</>
     </div>
   );
-  //   return <></>;
 };
 
 export default Recipies;
