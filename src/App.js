@@ -11,6 +11,9 @@ import AllRecipes from "./pages/AllRecipes";
 import Intro from "./pages/Intro";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import Footer from "./components/Footer";
+import CategoryHeader from "./components/CategoryHeader";
+import Searchbar from "./components/Searchbar";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -26,21 +29,22 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <UserContext.Provider value={[user, setUser]}>
+        <CategoryHeader />
+        <Searchbar />
         <Routes>
-          <Route path="/register" Component={Register} />
-          <Route path="/login" Component={Login} />
-          <Route path="/recipies" Component={Recipies} />
           {!user && (
             <>
               <Route path="/register" Component={Register} />
               <Route path="/login" Component={Login} />
             </>
           )}
-          <Route path="/" Component={Intro} />
+
           <Route path="/home" Component={Home} />
-          <Route path="/recipes/create" Component={AddRecipe} />
           <Route path="/recipes" Component={AllRecipes} />
-          <Route path="/profile" Component={Profile} />
+        </Routes>
+        <Routes>
+          <Route path="/home/*" Component={Footer} />
+          <Route path="/recipes/*" Component={Footer} />
         </Routes>
       </UserContext.Provider>
     </QueryClientProvider>
