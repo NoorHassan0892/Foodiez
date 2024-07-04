@@ -70,4 +70,5 @@ export {
   updateProfile,
   allRecipies,
   getuser,
+  getMyProfile,
 };

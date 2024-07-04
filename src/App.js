@@ -10,8 +10,9 @@ import UserContext from "./context/UserContext";
 import { useEffect, useState } from "react";
 import Register from "./pages/Register";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-
 import Home from "./pages/Home";
+import AllUsers from "./pages/AllUsers";
+import Intro from "./pages/Intro";
 import Profile from "./pages/Profile";
 import Footer from "./components/Footer";
 import CategoryHeader from "./components/CategoryHeader";
@@ -41,6 +42,10 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <UserContext.Provider value={[user, setUser]}>
         <Routes>
+          <Route path="/home" Component={Home}></Route>
+          <Route path="/register" Component={Register} />
+          <Route path="/login" Component={Login} />
+          <Route path="/recipies" Component={Recipies} />
           {!user && (
             <>
               <Route path="/register" Component={Register} />
