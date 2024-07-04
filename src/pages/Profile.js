@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { getMyProfile, getuser } from "../api/auth";
 import UserContext from "../context/UserContext"; // Adjust the import based on your setup
 import Recipies from "./Recipies";
-import RecipeItem from "../components/RecipeItem";
+import RecipeItem from "../components/RecipeItemAsma";
 
 const Profile = () => {
   const [user] = useContext(UserContext); // Assuming user object contains userId

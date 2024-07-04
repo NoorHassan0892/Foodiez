@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import theImage from "../assets/search bar pic.svg";
 import { getAllRecipes } from "../api/recipes";
-import RecipeItem from "./RecipeItem";
 import { useQuery } from "@tanstack/react-query";
+import RecipieItem from "./RecipieItem";
 
 const Searchbar = () => {
   const [query, setQuery] = useState("");
@@ -17,7 +17,7 @@ const Searchbar = () => {
   );
 
   const recipesList = filteredRecipes?.map((recipe) => (
-    <RecipeItem key={recipe.id} recipe={recipe} />
+    <RecipieItem key={recipe.id} recipe={recipe} />
   ));
 
   const handleSearch = (event) => {
