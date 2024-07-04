@@ -5,12 +5,14 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import { getAllCategories } from "../api/categories";
 import { addIngredient, getAllIngredients } from "../api/ingredients";
 import { addrecipe } from "../api/recipes";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const AddRecipe = () => {
   const [image, setImage] = useState(null);
   const [recipeInfo, setRecipeInfo] = useState({
     "input Name": " user value",
   });
+  const navigate = useNavigate();
   const [selectedIngredients, setselectedIngredients] = useState([]);
   const { data: categories, refetch: refetchCategories } = useQuery({
     queryKey: ["categories"],
@@ -38,6 +40,9 @@ const AddRecipe = () => {
         }),
         recipeInfo
       ),
+    onSuccess: () => {
+      navigate("/Recipe");
+    },
   });
 
   const handleImageChnage = (e) => {
@@ -52,6 +57,7 @@ const AddRecipe = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("recipe", recipeInfo);
     createRecipe();
   };
 

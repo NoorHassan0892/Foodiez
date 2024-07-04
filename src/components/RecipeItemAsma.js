@@ -1,14 +1,19 @@
 import React from "react";
 
 const RecipeItem = ({ recipe }) => {
+  const BASEURL = "http://localhost:8000";
   return (
-    <div>
-      <div className="bg-transparent flex flex-col font-Poppins p-4 mb-4 min-w-[300px]">
-        <img className="rounded-md" alt={recipe.name} src={recipe.image} />
-        <div className="text-black font-medium text-lg"></div>
-        <div className="text-black font-light text-base">
-          By
-          <div className=" font-light text-emerald-700">{recipe.user}</div>
+    <div className="p-4 w-[20%]">
+      <img
+        className="rounded-md w-[25%]"
+        alt={recipe.title}
+        src={`${BASEURL}/${recipe.image}`}
+      />
+      <div className="text-black font-medium text-lg">{recipe.title}</div>
+      <div className="text-black font-light text-base">
+        By
+        <div className=" font-light text-emerald-700">
+          {recipe.username?.username}
         </div>
       </div>
     </div>

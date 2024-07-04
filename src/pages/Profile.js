@@ -15,22 +15,23 @@ import React, { useContext } from "react";
 import { getMyProfile, getuser } from "../api/auth";
 import UserContext from "../context/UserContext"; // Adjust the import based on your setup
 import Recipies from "./Recipies";
-import RecipeItem from "../components/RecipeItem";
+import RecipeItem from "../components/RecipeItemAsma";
 
 const Profile = () => {
   const [user] = useContext(UserContext); // Assuming user object contains userId
-  const userId = user?.id; // Adjust based on your user object structure
 
   const {
     data: userInfo,
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["profile", userId],
+    queryKey: ["profile"],
     queryFn: () => getMyProfile(),
   });
 
-  const recipesList = userId.recipes?.map((recipe) => (
+  console.log("me", userInfo);
+
+  const recipesList = userInfo?.recipes?.map((recipe) => (
     <RecipeItem key={recipe.id} recipe={recipe} />
   ));
 
@@ -40,9 +41,6 @@ const Profile = () => {
   return (
     <div className="bg-blue-200 flex flex-col h-screen px-[300px] ">
       <div className="bg-red-300 w-full h-[20%] flex ">
-        <div className="bg-red-900 w-[20%] h-full ">
-          {userInfo?.image && <img src={userInfo.image} alt="Profile" />}
-        </div>
         <div className="bg-green-900">{userInfo?.username}</div>
       </div>
       <div className="bg-blue-300 w-full h-[80%]">{recipesList}</div>
