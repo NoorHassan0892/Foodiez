@@ -6,13 +6,7 @@ import Searchbar from "../components/Searchbar";
 import CategoryHeader from "../components/CategoryHeader";
 
 const Home = () => {
-  return (
-    <div>
-      <CategoryHeader />
-      <Searchbar />
-      <Footer />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Home;
